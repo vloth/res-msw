@@ -16,7 +16,7 @@
   "suffix": ".bs.js",
   "bs-dev-dependencies": ["@glennsl/bs-jest", "bs-fetch"],
   "ppx-flags": [
-    ["bisect_ppx/ppx", "--exclude-files", ".*test\\.re"]
+    ["bisect_ppx/ppx", "--exclude-files", ".*_test\\.re$$", "--exclude-files", ".*\\/__tests__\\/support\\/.*\\.re$$"]
   ],
   "warnings": {
     "error": "+101"

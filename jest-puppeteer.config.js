@@ -3,7 +3,7 @@ module.exports = {
     devtools: false,
   },
   server: {
-    command: 'npm run dev',
+    command: 'npm run dev-server',
     port: 8080,
   },
 };

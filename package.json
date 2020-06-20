@@ -8,16 +8,18 @@
     "url": "https://github.com/jihchi/bs-msw/issues"
   },
   "scripts": {
-    "precoverage": "BISECT_ENABLE=yes npm run build",
-    "coverage": "npm test && npx bisect-ppx-report.exe html",
-    "dev": "webpack-dev-server",
     "build": "bsb -make-world",
     "clean": "bsb -clean-world",
+    "dev-server": "webpack-dev-server",
     "format": "find ./src ./__tests__ -regex '.*\\.rei\\{0,1\\}' -exec bsrefmt --in-place '{}' \\;",
-    "prepublishOnly": "npm run build",
-    "pretest": "npm run build",
+    "prepublishOnly": "npm test",
     "start": "npm run build -- -w",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "BISECT_ENABLE=yes npm run build && npm test",
+    "cleanbuild": "npm run clean && npm run build",
+    "cleanbisect": "rm bisect*.coverage || true",
+    "cleancoverage": "npm run cleanbisect && npm run clean && npm run coverage",
+    "cleantest": "npm run cleanbuild && npm test"
   },
   "keywords": [
     "BuckleScript",
