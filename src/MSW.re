@@ -56,7 +56,8 @@ module GraphQL = {
 
   type responseTransformer;
   type completeTransformer;
-  type responseResolver('a) = (request('a), response, context) => completeTransformer;
+  type responseResolver('a) =
+    (request('a), response, context) => completeTransformer;
 
   let mock: (array(responseTransformer), response) => completeTransformer = [%raw
     {|

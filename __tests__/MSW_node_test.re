@@ -192,7 +192,7 @@ describe("Node Server", () => {
       let body =
         {
           "query": {|
-            mutation Logout {
+            mutation LogoutError {
               logout {
                 session
               }
@@ -218,7 +218,9 @@ describe("Node Server", () => {
       |> then_(res => res->Fetch.Response.text)
       |> then_(text => {
            expect(text)
-           |> toEqual({|{"data":{"referrer":"jihchi/bs-msw"}}|})
+           |> toEqual(
+                {|{"errors":[{"message":"This is a mocked error: jihchi/bs-msw","locations":[{"line":1,"column":2}]}]}|},
+              )
            |> resolve
          });
     });
