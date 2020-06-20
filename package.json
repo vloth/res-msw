@@ -8,6 +8,8 @@
     "url": "https://github.com/jihchi/bs-msw/issues"
   },
   "scripts": {
+    "precoverage": "BISECT_ENABLE=yes npm run build",
+    "coverage": "npm test && npx bisect-ppx-report.exe html",
     "dev": "webpack-dev-server",
     "build": "bsb -make-world",
     "clean": "bsb -clean-world",
@@ -31,7 +33,9 @@
     "/src/**/*.re",
     "bsconfig.json"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "bisect_ppx": "^2.4.1"
+  },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.5.1",
     "bs-fetch": "^0.6.1",
